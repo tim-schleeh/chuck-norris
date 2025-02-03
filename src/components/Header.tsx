@@ -4,9 +4,9 @@
 import Image from "next/image";
 
 export default function Header() {
-  
+
   return (
-    <header className="text-white text-center p-4">
+    <header className="text-white text-center p-4 sticky top-0 z-10 bg-[var(--background)]">
       <Image
         src="https://www.wus.de/_assets/93cc33772021915c246c29966f71886a/Icons/layout-logo-w-s-weis.svg"
         height={50}

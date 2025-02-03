@@ -52,7 +52,7 @@ export default function Quote() {
         <p className="text-xl italic">{quote}</p>
         <button
           onClick={fetchQuote}
-          className="mt-4 px-4 py-2 rounded bg-transparent border text-white"
+          className="mt-4 px-4 py-2 rounded bg-transparent border "
         >
           Neues Zitat
         </button>

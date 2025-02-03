@@ -22,7 +22,7 @@ export default async function Footer() {
   }
   
   return (
-    <footer className="text-white text-center p-4">
+    <footer className=" text-center p-4">
       <hr className="pb-4" />
       Besucher: {visitorCount.count}
     </footer>
