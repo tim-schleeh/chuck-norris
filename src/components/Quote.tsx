@@ -22,7 +22,9 @@ export default function Quote() {
   // }
   const fetchQuote = async () => {
     try {
-      const response = await fetch("https://api.chucknorris.io/jokes/random");
+      const response = await fetch(
+        "https://api.chucknorris.io/jokes/random?category=dev"
+      );
       const data = await response.json();
       setQuote(data.value);
     } catch (error) {
