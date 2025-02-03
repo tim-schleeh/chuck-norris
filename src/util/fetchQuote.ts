@@ -20,7 +20,7 @@ export const fetchQuote = async (): Promise<string> => {
 
     // check if result is ok
     if (!res.ok) {
-      throw new Error(`Fehler beim Abrufen des Zitats: ${res.statusText}`);
+      throw new Error(`Error on fetching quote: ${res.statusText}`);
     }
 
     // read the result and parse to json
@@ -28,6 +28,6 @@ export const fetchQuote = async (): Promise<string> => {
 
     return data.value;
   } catch (err) {
-    throw err instanceof Error ? err.message : "Unbekannter Fehler";
+    throw err instanceof Error ? err.message : "Unknown Error";
   }
 };

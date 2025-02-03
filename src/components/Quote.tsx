@@ -5,7 +5,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import chuckPic from "../../public/chuckNorris.jpg";
-import { fetchQuote } from "../util/fetchQuote"; // Importiere die Funktion
+import { fetchQuote } from "../util/fetchQuote";
 
 
 export default function Quote() {
@@ -21,11 +21,11 @@ export default function Quote() {
 
     try {
       const fetchedQuote = await fetchQuote();
-      setQuote(fetchedQuote);
+      setQuote(fetchedQuote); // no error, set the quote
     } catch (err) {
-      setError(err as string);
+      setError(err as string); // error, set the error
     } finally {
-      setIsLoading(false);
+      setIsLoading(false); // done loading
     }
   };
 
