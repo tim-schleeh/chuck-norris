@@ -1,3 +1,5 @@
+// main route content
+
 import Quote from "@/components/Quote";
 
 export default function Home() {
