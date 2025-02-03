@@ -1,4 +1,4 @@
-// Layout Footer
+// Footer
 
 import { PrismaClient } from '@prisma/client'
 
@@ -24,7 +24,7 @@ export default async function Footer() {
   return (
     <footer className=" text-center p-4">
       <hr className="pb-4" />
-      Besucher: {visitorCount.count}
+      Visitors: {visitorCount.count}
     </footer>
   );
 }

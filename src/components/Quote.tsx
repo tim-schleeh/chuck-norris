@@ -5,35 +5,33 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import chuckPic from "../../public/chuckNorris.jpg";
+import { fetchQuote } from "../util/fetchQuote"; // Importiere die Funktion
+
 
 export default function Quote() {
+  // state for quote handling
   const [quote, setQuote] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  // fetch quote from API
-  // response format is:
-  //   {
-  //     "categories": [],
-  //     "created_at": "2020-01-05 13:42:21.795084",
-  //     "icon_url": "https://api.chucknorris.io/img/avatar/chuck-norris.png",
-  //     "id": "Xnt8KedKQ4uUFhVdsZBcvA",
-  //     "updated_at": "2020-01-05 13:42:21.795084",
-  //     "url": "https://api.chucknorris.io/jokes/Xnt8KedKQ4uUFhVdsZBcvA",
-  //     "value": "Chuck Norris doesn't do pushups- Chuck Norris pushes the earth down!"
-  // }
-  const fetchQuote = async () => {
+  // handle quote fetching
+  const getQuote = async () => {
+    setIsLoading(true);
+    setError("");
+
     try {
-      const response = await fetch(
-        "https://api.chucknorris.io/jokes/random?category=dev"
-      );
-      const data = await response.json();
-      setQuote(data.value);
-    } catch (error) {
-      console.error(error);
+      const fetchedQuote = await fetchQuote();
+      setQuote(fetchedQuote);
+    } catch (err) {
+      setError(err as string);
+    } finally {
+      setIsLoading(false);
     }
   };
 
+  // fetch initial quote
   useEffect(() => {
-    fetchQuote();
+    getQuote();
   }, []);
 
   return (
@@ -49,12 +47,18 @@ export default function Quote() {
         </div>
       </div>
       <div className="flex flex-grow sm:flex-grow-0 flex-col sm:w-2/3 w-full items-center justify-center">
-        <p className="text-xl italic">{quote}</p>
+        {isLoading ? (
+            <p className="text-xl italic text-gray-500 animate-pulse">Loading Quote...</p>
+          ) : error ? (
+            <p className="text-xl italic text-red-500">{error}</p>
+          ) : (
+            <p className="text-xl italic">{quote}</p>
+        )}
         <button
-          onClick={fetchQuote}
+          onClick={getQuote}
           className="mt-4 px-4 py-2 rounded bg-transparent border "
         >
-          Neues Zitat
+          New Quote
         </button>
       </div>
     </div>

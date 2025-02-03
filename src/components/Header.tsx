@@ -1,4 +1,4 @@
-// Layout Header
+// Header
 // logo image loaded from external source
 
 import Image from "next/image";

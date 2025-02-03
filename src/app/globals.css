@@ -1,8 +1,9 @@
+/* Tailwind setup */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
+/* Global vars */
 :root {
   --background: #ffffff;
   --foreground: #101415;
@@ -15,6 +16,7 @@
   }
 }
 
+/* Global CSS */
 body {
   color: var(--foreground);
   background: var(--background);
